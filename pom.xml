@@ -17,33 +17,21 @@
         </license>
     </licenses>
 
-    <scm>
-        <url>https://github.com/kstyrc/embedded-redis</url>
-        <connection>scm:git:https://github.com/kstyrc/embedded-redis.git</connection>
-        <developerConnection>scm:git:https://github.com/kstyrc/embedded-redis.git</developerConnection>
-        <tag>embedded-redis-0.5</tag>
-    </scm>
-
-    <developers>
-        <developer>
-            <name>Krzysztof Styrc</name>
-            <email>kstyrc@gmail.com</email>
-        </developer>
-    </developers>
-
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
     <distributionManagement>
-        <snapshotRepository>
-            <id>ossrh</id>
-            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-        </snapshotRepository>
         <repository>
-            <id>ossrh</id>
-            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+            <id>central</id>
+            <name>artifactory-main-releases</name>
+            <url>http://artifactory.intra.xiaojukeji.com/artifactory/libs-release</url>
         </repository>
+        <snapshotRepository>
+            <id>snapshots</id>
+            <name>artifactory-main-snapshots</name>
+            <url>http://artifactory.intra.xiaojukeji.com/artifactory/libs-snapshot</url>
+        </snapshotRepository>
     </distributionManagement>
 
     <dependencies>

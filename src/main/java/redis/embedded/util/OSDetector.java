@@ -80,12 +80,20 @@ public class OSDetector {
             String line;
             Process proc = Runtime.getRuntime().exec("sysctl hw");
             input = new BufferedReader(new InputStreamReader(proc.getInputStream()));
+            boolean isX86_64 = false;
             while ((line = input.readLine()) != null) {
                 if (line.length() > 0) {
+                    if(line.contains("optional.arm64") && (line.trim().endsWith("1"))){
+                        return Architecture.aarch64;
+                    }
                     if ((line.contains("cpu64bit_capable")) && (line.trim().endsWith("1"))) {
-                        return Architecture.x86_64;
+                        isX86_64 = true;
                     }
                 }
+            }
+
+            if(isX86_64){
+               return Architecture.x86_64;
             }
         } catch (Exception e) {
             throw new OsDetectionException(e);

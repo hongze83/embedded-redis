@@ -14,7 +14,8 @@ public class RedisServerTest {
 
 	private RedisServer redisServer;
 	
-	@Test(timeout = 1500L)
+//	@Test(timeout = 1500L)
+	@Test
 	public void testSimpleRun() throws Exception {
 		redisServer = new RedisServer(6379);
 		redisServer.start();
@@ -57,7 +58,6 @@ public class RedisServerTest {
 			pool = new JedisPool("localhost", 6379);
 			jedis = pool.getResource();
 			jedis.mset("abc", "1", "def", "2");
-			
 			assertEquals("1", jedis.mget("abc").get(0));
 			assertEquals("2", jedis.mget("def").get(0));
 			assertEquals(null, jedis.mget("xyz").get(0));
